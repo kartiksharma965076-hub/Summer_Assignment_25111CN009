@@ -1,4 +1,5 @@
-#include <stdio.h>
+#include <stdio.h>20
+
  void main() {
    int i,n,sum=0;
    printf("input value of terms:");
