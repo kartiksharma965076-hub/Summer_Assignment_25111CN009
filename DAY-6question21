@@ -1,0 +1,26 @@
+#include <stdio.h>
+int main() 
+{
+    int decimal;
+    int binary = 0;
+    int place = 1;
+    printf("Enter a decimal number: ");
+    if (scanf("%d", &decimal) != 1 || decimal < 0) 
+{
+        printf("Invalid input.\n");
+        return 1;
+    }
+   if (decimal == 0) 
+{
+        printf("Binary equivalent: 0\n");
+        return 0;
+    }
+   while (decimal > 0)
+{
+        binary += (decimal % 2) * place;
+        decimal = decimal / 2;
+        place *= 10;
+    }
+    printf("Binary equivalent: %d\n", binary);
+    return 0;
+}
