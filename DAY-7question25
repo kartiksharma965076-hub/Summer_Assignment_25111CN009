@@ -1,0 +1,27 @@
+#include <stdio.h>
+
+unsigned long long factorial(int n) {
+    if (n <= 1) {
+        return 1;
+    }
+    return n * factorial(n - 1);
+}
+
+int main() {
+    int num;
+
+    printf("Enter a number: ");
+    if (scanf("%d", &num) != 1 || num < 0) {
+        printf("Invalid input.\n");
+        return 1;
+    }
+
+    if (num > 20) {
+        printf("Number too large.\n");
+        return 1;
+    }
+
+    printf("Factorial: %llu\n", factorial(num));
+
+    return 0;
+}
