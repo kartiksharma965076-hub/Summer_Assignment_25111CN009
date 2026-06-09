@@ -1,0 +1,23 @@
+#include <stdio.h>
+
+int main() {
+    int rows;
+
+    printf("Enter number of rows: ");
+    if (scanf("%d", &rows) != 1 || rows <= 0 || rows > 26) {
+        printf("Invalid input.\n");
+        return 1;
+    }
+
+    char ch = 'A';
+
+    for (int i = 1; i <= rows; i++) {
+        for (int j = 1; j <= i; j++) {
+            printf("%c", ch);
+        }
+        printf("\n");
+        ch++;
+    }
+
+    return 0;
+}
