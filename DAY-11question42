@@ -1,0 +1,24 @@
+#include <stdio.h>
+
+int find_max(int a, int b) {
+    if (a > b) {
+        return a;
+    }
+    return b;
+}
+
+int main() {
+    int num1, num2, result;
+
+    printf("Enter two numbers: ");
+    if (scanf("%d %d", &num1, &num2) != 2) {
+        printf("Invalid input.\n");
+        return 1;
+    }
+
+    result = find_max(num1, num2);
+
+    printf("Maximum: %d\n", result);
+
+    return 0;
+}
