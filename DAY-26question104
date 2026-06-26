@@ -1,0 +1,47 @@
+#include <stdio.h>
+
+int main() {
+    int score = 0;
+    char answer;
+
+    printf("Welcome to the Mini C Programming Quiz!\n\n");
+
+    printf("Question 1: Which data type is used to store text in C?\n");
+    printf("A. int\nB. char\nC. float\nD. string\n");
+    printf("Your answer: ");
+    scanf(" %c", &answer);
+    if (answer == 'B' || answer == 'b') {
+        printf("Correct!\n\n");
+        score++;
+    } else {
+        printf("Wrong answer! Correct answer is B.\n\n");
+    }
+
+    printf("Question 2: What is the index number of the first element in a C array?\n");
+    printf("A. 1\nB. -1\nC. 0\nD. Depends on array size\n");
+    printf("Your answer: ");
+    scanf(" %c", &answer);
+    if (answer == 'C' || answer == 'c') {
+        printf("Correct!\n\n");
+        score++;
+    } else {
+        printf("Wrong answer! Correct answer is C.\n\n");
+    }
+
+    printf("Question 3: Which keyword is used to return a value from a function?\n");
+    printf("A. break\nB. return\nC. void\nD. exit\n");
+    printf("Your answer: ");
+    scanf(" %c", &answer);
+    if (answer == 'B' || answer == 'b') {
+        printf("Correct!\n\n");
+        score++;
+    } else {
+        printf("Wrong answer! Correct answer is B.\n\n");
+    }
+
+    printf("Quiz Completed!\n");
+    printf("Your Total Score: %d out of 3\n", score);
+
+    return 0;
+}
+
