@@ -1,0 +1,43 @@
+#include <stdio.h>
+
+struct SalaryData {
+    int emp_id;
+    char name[50];
+    float basic_salary;
+    float hra;
+    float da;
+    float gross_salary;
+};
+
+int main() {
+    int n, i;
+
+    printf("Enter the number of employees for salary processing: ");
+    scanf("%d", &n);
+
+    struct SalaryData emp[n];
+
+    for (i = 0; i < n; i++) {
+        printf("\nEnter salary metrics for employee %d:\n", i + 1);
+        printf("Employee ID: ");
+        scanf("%d", &emp[i].emp_id);
+        printf("Name: ");
+        scanf(" %[^\n]", emp[i].name);
+        printf("Basic Salary: ");
+        scanf("%f", &emp[i].basic_salary);
+
+        emp[i].hra = emp[i].basic_salary * 0.20;
+        emp[i].da = emp[i].basic_salary * 0.50;
+        emp[i].gross_salary = emp[i].basic_salary + emp[i].hra + emp[i].da;
+    }
+
+    printf("\n*** Payroll Statement ***\n");
+    printf("%-10s %-20s %-12s %-10s %-10s %-12s\n", "Emp ID", "Name", "Basic", "HRA(20%)", "DA(50%)", "Gross Salary");
+    for (i = 0; i < n; i++) {
+        printf("%-10d %-20s %-12.2f %-10.2f %-10.2f %-12.2f\n", 
+               emp[i].emp_id, emp[i].name, emp[i].basic_salary, emp[i].hra, emp[i].da, emp[i].gross_salary);
+    }
+
+    return 0;
+}
+
