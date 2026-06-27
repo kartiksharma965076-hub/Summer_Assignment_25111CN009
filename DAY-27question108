@@ -1,0 +1,66 @@
+#include <stdio.h>
+
+struct Marksheet {
+    int roll_no;
+    char name[50];
+    int math;
+    int science;
+    int english;
+    int total;
+    float percentage;
+    char grade;
+};
+
+int main() {
+    int n, i;
+
+    printf("Enter the number of students: ");
+    scanf("%d", &n);
+
+    struct Marksheet s[n];
+
+    for (i = 0; i < n; i++) {
+        printf("\nEnter details for student %d:\n", i + 1);
+        printf("Roll Number: ");
+        scanf("%d", &s[i].roll_no);
+        printf("Name: ");
+        scanf(" %[^\n]", s[i].name);
+        printf("Enter Math marks (out of 100): ");
+        scanf("%d", &s[i].math);
+        printf("Enter Science marks (out of 100): ");
+        scanf("%d", &s[i].science);
+        printf("Enter English marks (out of 100): ");
+        scanf("%d", &s[i].english);
+
+        s[i].total = s[i].math + s[i].science + s[i].english;
+        s[i].percentage = (float)s[i].total / 3;
+
+        if (s[i].percentage >= 90) {
+            s[i].grade = 'A';
+        } else if (s[i].percentage >= 75) {
+            s[i].grade = 'B';
+        } else if (s[i].percentage >= 50) {
+            s[i].grade = 'C';
+        } else if (s[i].percentage >= 35) {
+            s[i].grade = 'D';
+        } else {
+            s[i].grade = 'F';
+        }
+    }
+
+    printf("\n=========================================================================");
+    printf("\n                           GENERATED MARKSHEETS                          ");
+    printf("\n=========================================================================\n");
+
+    for (i = 0; i < n; i++) {
+        printf("Roll No: %-10d Name: %-30s\n", s[i].roll_no, s[i].name);
+        printf("-------------------------------------------------------------------------\n");
+        printf("Math: %-10d Science: %-10d English: %-10d\n", s[i].math, s[i].science, s[i].english);
+        printf("Total Marks: %-10d Percentage: %-10.2f Grade: %-5c\n", s[i].total, s[i].percentage, s[i].grade);
+        printf("Result: %s\n", (s[i].grade == 'F') ? "FAILED" : "PASSED");
+        printf("=========================================================================\n\n");
+    }
+
+    return 0;
+}
+
