@@ -1,0 +1,69 @@
+#include <stdio.h>
+
+struct Account {
+    int account_no;
+    char holder_name[50];
+    float balance;
+};
+
+int main() {
+    struct Account user;
+    int choice;
+    float amount;
+
+    printf("Welcome to Bank Account Creation Utility\n");
+    printf("Enter Account Number: ");
+    scanf("%d", &user.account_no);
+    printf("Enter Account Holder Name: ");
+    scanf(" %[^\n]", user.holder_name);
+    printf("Enter Initial Deposit Balance: $");
+    scanf("%f", &user.balance);
+    printf("Account registered successfully!\n");
+
+    while (1) {
+        printf("\n*** Bank Account Profile Options ***\n");
+        printf("1. View Profile & Balance\n");
+        printf("2. Cash Deposit\n");
+        printf("3. Cash Withdrawal\n");
+        printf("4. Exit Session\n");
+        printf("Enter option number: ");
+        scanf("%d", &choice);
+
+        switch (choice) {
+            case 1:
+                printf("\nAccount No: %d\n", user.account_no);
+                printf("Holder Name: %s\n", user.holder_name);
+                printf("Current Balance: $%.2f\n", user.balance);
+                break;
+            case 2:
+                printf("Enter amount to deposit: $");
+                scanf("%f", &amount);
+                if (amount > 0) {
+                    user.balance += amount;
+                    printf("$%.2f successfully deposited into your profile.\n", amount);
+                } else {
+                    printf("Invalid deposit amount.\n");
+                }
+                break;
+            case 3:
+                printf("Enter amount to withdraw: $");
+                scanf("%f", &amount);
+                if (amount > user.balance) {
+                    printf("Transaction rejected. Insufficient fund availability.\n");
+                } else if (amount <= 0) {
+                    printf("Invalid entry value.\n");
+                } else {
+                    user.balance -= amount;
+                    printf("$%.2f withdrawn successfully.\n", amount);
+                }
+                break;
+            case 4:
+                printf("Session terminated securely. Thank you.\n");
+                return 0;
+            default:
+                printf("Incorrect feature index choice chosen.\n");
+        }
+    }
+    return 0;
+}
+
