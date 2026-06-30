@@ -1,0 +1,68 @@
+#include <stdio.h>
+#include <string.h>
+
+void addItem(char items[][30], float prices[], int quantities[], int *count) {
+    if (*count >= 10) {
+        printf("Cart is full.\n");
+        return;
+    }
+    printf("Enter item name: ");
+    scanf(" %[^\n]", items[*count]);
+    printf("Enter item price: ");
+    scanf("%f", &prices[*count]);
+    printf("Enter quantity: ");
+    scanf("%d", &quantities[*count]);
+    (*count)++;
+    printf("Item added to cart.\n");
+}
+
+void displayCart(char items[][30], float prices[], int quantities[], int count) {
+    int i;
+    float total = 0, item_total;
+    if (count == 0) {
+        printf("\nYour cart is empty.\n");
+        return;
+    }
+    printf("\n*** Shopping Cart / Bill Summary ***\n");
+    printf("%-20s %-10s %-10s %-10s\n", "Item Name", "Price", "Qty", "Total");
+    for (i = 0; i < count; i++) {
+        item_total = prices[i] * quantities[i];
+        total += item_total;
+        printf("%-20s %-10.2f %-10d %-10.2f\n", items[i], prices[i], quantities[i], item_total);
+    }
+    printf("--------------------------------------------------\n");
+    printf("%-42s %-10.2f\n", "Grand Total:", total);
+}
+
+int main() {
+    char cart_items[10][30];
+    float item_prices[10];
+    int item_quantities[10];
+    int item_count = 0;
+    int choice;
+
+    while (1) {
+        printf("\n=== Mini Billing Project ===\n");
+        printf("1. Add Item to Cart\n");
+        printf("2. View Cart & Generate Bill\n");
+        printf("3. Exit\n");
+        printf("Enter your choice: ");
+        scanf("%d", &choice);
+
+        switch (choice) {
+            case 1:
+                addItem(cart_items, item_prices, item_quantities, &item_count);
+                break;
+            case 2:
+                displayCart(cart_items, item_prices, item_quantities, item_count);
+                break;
+            case 3:
+                printf("Thank you for shopping with us.\n");
+                return 0;
+            default:
+                printf("Invalid choice. Try again.\n");
+        }
+    }
+    return 0;
+}
+
